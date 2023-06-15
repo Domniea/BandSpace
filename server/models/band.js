@@ -8,12 +8,24 @@ const bandSchema = new Schema({
     city: {
         type: String
     },
+    genre: {
+        type: [String]
+    },
     facebookURL: {
         type: String
+    },
+    spotifyURL: {
+        type: String
+    },
+    bandcampURL: {
+        type: String
+    },
+    soundCloudURL: {
+        String
     },
     email: {
         type: String
     }
 })
 
-module.exports = mongoose.model('Band', bandSchema)                                                                                                                                                                                                    
+module.exports = mongoose.model('Band', bandSchema)

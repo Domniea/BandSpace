@@ -15,7 +15,7 @@ bandRouter.get('/', (req, res, next) => {
 
 //GET One
 bandRouter.get('/:bandId', (req, res, next) => {
-    Band.find(
+    Band.findOne(
         { _id: req.params.bandId},
         (err, band) => {
         if(err) {

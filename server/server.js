@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+require('dotenv').config()
 const mongoose= require('mongoose')
 mongoose.set('strictQuery', true)
 const morgan = require('morgan')
@@ -8,9 +9,9 @@ const morgan = require('morgan')
 app.use(express.json())
 app.use(morgan('dev'))
 
-mongoose.connect('mongodb+srv://domniea:password666@cluster-bands.ygk1xtq.mongodb.net/utah?retryWrites=true&w=majority', () => {
-    console.log('Connected to Atlas!')
-})
+mongoose.connect(`${process.env.ATLAS_URI}`, () => {
+    console.log("Connected to DB");
+  });
 
 //Routes
 app.get('/', (req, res, next) => {
@@ -25,6 +26,6 @@ app.use((err, req, res, next) => {
 })
 
 //LocalRouter
-app.listen(9000, () => {
-    console.log(`Successfully listening on port: ${9000}`)
+app.listen(process.env.PORT || 9000, () => {
+    console.log(`Successfully listening on port: ${process.env.PORT}`)
 })
