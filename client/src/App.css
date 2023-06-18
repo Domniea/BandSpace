@@ -1,3 +1,32 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  font-size: 1.5rem;
+  margin: 5%;
+  padding:1%;
+  background-color: grey;
+  border: 1PX solid black;
+  color: white;
+  -webkit-text-stroke: .5px black;
+}
+
+button, input, select {
+  padding: 1%;
+}
+
+.BandSubmition {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 .Form--bandsubmition {
   display: flex;
   flex-wrap: wrap;
@@ -14,6 +43,7 @@
   width: fit-content;
   height: fit-content;
   background-color: rgba(128, 128, 128, 0.434);
+  border: 1px solid black;
   margin: 3%;
   display: flex;
   flex-wrap: wrap;
@@ -24,3 +54,24 @@
 .checkbox--genre {
   margin: 1vw;
 }
+
+.BandCard {
+  background-color: rgb(177, 196, 177);
+  border: 2px solid rgb(69, 69, 69);
+  margin: 2%;
+}
+
+/* .bandHeader {
+  background-color: rgb(177, 196, 177);
+  border: 1px rgb(69, 69, 69);
+} */
+
+.bandHeader > h1 {
+  display: inline;
+}
+.bandHeader > button {
+  display: inline;
+  float: right;
+}
+
+

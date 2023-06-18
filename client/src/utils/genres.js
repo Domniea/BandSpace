@@ -102,7 +102,7 @@ const genres = [
         genre: "Rap"
     },
     {
-        genre: "Gamgster Rap"
+        genre: "Gangster Rap"
     },
     {
         genre: "Hip-Hop"

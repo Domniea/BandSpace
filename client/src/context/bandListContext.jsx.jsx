@@ -1,20 +1,22 @@
 import React, { createContext, useState, useEffect } from 'react'
 import axios from 'axios'
 
-const BandList = createContext()
+const BandListData = createContext()
 
-function bandListProvider(props) {
-    const [bandList, setBandList] = useState()
+function BandListProvider(props) {
+    const [bandList, setBandList] = useState([])
 
     useEffect(() => {
         axios.get('/api/bands')
-            .then(res => console.log(res.data))
+            .then(res => setBandList(res.data))
             .catch(err => console.log(err))
-    })
+    }, [])
 
     return (
-        <bandContext.Provider>
+        <BandListData.Provider value={bandList}>
             {props.children}
-        </bandContext.Provider>
+        </BandListData.Provider>
     )
 }
+
+export {BandListData, BandListProvider}

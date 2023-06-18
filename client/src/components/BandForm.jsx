@@ -105,7 +105,11 @@ function bandForm() {
                             checked={checkedGenres[index]}
                             onChange={() => handleCheckedGenreChange(index)}
                         />
-                        <label htmlFor={`checkbox-genre-${type.genre}`}>{type.genre}</label>
+                        <label 
+                            htmlFor={`checkbox-genre-${type.genre}`}
+                        >
+                            {type.genre}
+                        </label>
                     </>          
                         
                 </div>
@@ -132,13 +136,6 @@ function bandForm() {
                         onChange={handleChange}
                         placeholder='Band Name' 
                     />
-                    {/* <input 
-                        type="text" 
-                        name='city'
-                        value={inputs.city}
-                        onChange={handleChange}
-                        placeholder='City' 
-                    /> */}
                         <input 
                             type="email" 
                             name='email'

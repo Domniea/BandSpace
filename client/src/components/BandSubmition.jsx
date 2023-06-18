@@ -5,7 +5,9 @@ function BandSubmition() {
     return (
         <>
             <div className="BandSubmition">
-                <h1>Band Submition Test</h1>
+                <header>
+                    <h1>Band Submition Form</h1>
+                </header>
                 <BandForm />
             </div>
         </>
