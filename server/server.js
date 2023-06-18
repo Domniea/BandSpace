@@ -14,14 +14,14 @@ mongoose.connect(`${process.env.ATLAS_URI}`, () => {
   });
 
 //Routes
-app.get('/', (req, res, next) => {
+app.get('https://bandspace-production.up.railway.app/', (req, res, next) => {
     res.send('HomePage')
 })
 app.get('/test', (req, res, next) => {
     res.send('test')
 })
 
-app.use('/bands', require('./routes/bandRouter'))
+app.use('https://bandspace-production.up.railway.app/bands', require('./routes/bandRouter'))
 
 //Error Handeling
 app.use((err, req, res, next) => {
