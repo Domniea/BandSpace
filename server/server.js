@@ -17,6 +17,9 @@ mongoose.connect(`${process.env.ATLAS_URI}`, () => {
 app.get('/', (req, res, next) => {
     res.send('HomePage')
 })
+app.get('/test', (req, res, next) => {
+    res.send('test')
+})
 
 app.use('/bands', require('./routes/bandRouter'))
 
