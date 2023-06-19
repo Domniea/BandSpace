@@ -8,7 +8,7 @@ function BandListProvider(props) {
 
     useEffect(() => {
         axios.get('https://bandspace-production.up.railway.app/bands')
-            .then(res => console.log(res))
+            .then(res => setBandList(res.data))
             .catch(err => console.log(err))
     }, [])
 
