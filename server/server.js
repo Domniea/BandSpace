@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 require('dotenv').config()
+const cors = require('cors')
 const mongoose= require('mongoose')
 mongoose.set('strictQuery', true)
 const morgan = require('morgan')
@@ -8,6 +9,15 @@ const morgan = require('morgan')
 //Middleware
 app.use(express.json())
 app.use(morgan('dev'))
+
+app.use(
+    cors({
+      origin: ["https://bandspace-production.up.railway.app/"],
+      methods: ["GET", "POST", "PUT","DELETE"],
+      credentials: true,
+      origin: true,
+    })
+  );
 
 mongoose.connect(`${process.env.ATLAS_URI}`, () => {
     console.log("Connected to DB");
