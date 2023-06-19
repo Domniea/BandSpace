@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 function BandCard(props) {
 
-    const {name, facebookURL, spotifyURL, bandcampURL, genre, _id, deleteBand} = props
+    const {name, facebookURL, spotifyURL, bandcampURL, soundCloudURL, genre, _id, deleteBand} = props
 
     const [showBandDetails, setShowBandDetails] = useState(false)
 
@@ -18,13 +18,34 @@ function BandCard(props) {
             </div>
                 { showBandDetails &&
                     <>
-                        <a href={spotifyURL}>Spotify</a>
-                        <br></br>
-                        <a href={facebookURL}>FaceBook</a>
-                        <br></br>
+                    {
+                        spotifyURL &&
+                        <>
+                            <a href={spotifyURL}>Spotify</a>
+                            <br></br>
+                        </>
+                    }
+                        {
+                            facebookURL &&
+                            <>
+                                <a href={facebookURL}>FaceBook</a>
+                                <br></br>   
+                            </>
+                        }
                         {
                             bandcampURL &&
+                            <>
                                 <a href={bandcampURL}>Bandcamp</a>
+                                <br></br>
+                            </>
+
+                        }
+                        {
+                            soundCloudURL &&
+                            <>
+                                <a href={soundCloudURL}>SoundCloud</a>
+                                <br></br>
+                            </>
                         }
                         <h3>{genre.join(', ')}</h3>
                         <button onClick={() => deleteBand(_id)}>Delete</button>

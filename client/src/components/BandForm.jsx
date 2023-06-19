@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from "react"
-import axios from 'axios'
 import  genres  from '../utils/genres'
 
 function bandForm(props) {
@@ -10,11 +9,11 @@ function bandForm(props) {
     const initInputs = {
         name: '',
         city: '',
+        genre: '',
         facebookURL: '',
         spotifyURL: '',
         bandcampURL: '',
-        soundCloudURL: '',
-        genre: '',
+        soundcloudURL: '',
         email: ''
     }
 
@@ -30,11 +29,11 @@ function bandForm(props) {
         {
             name: '',
             city: 'Salt Lake City/SLC',
+            genre: genreData,
             facebookURL: '',
             spotifyURL: '',
             bandcampURL: '',
-            soundCloudURL: '',
-            genre: genreData,
+            soundcloudURL: '',
             email: ''
         }
     )
@@ -74,16 +73,10 @@ function bandForm(props) {
 
     }
 
-    // function postData(inputs) {
-    //     axios.post('https://bandspace-production.up.railway.app/bands', inputs)
-    //         .then(res => console.log(res.data))
-    //         .catch(err => console.log(err))
-    // }
-
     //Submit to API
     function handleSubmit(e) {
         e.preventDefault()
-        // console.log(inputs)
+        console.log(inputs)
         submit(inputs)
         alert('Your Band Has Been Submitted!!!')
         setInputs(initInputs)
@@ -101,7 +94,6 @@ function bandForm(props) {
                         <input 
                             type='checkbox'
                             name={type.genre}
-                            
                             id={`checkbox-genre-${type.genre}`}
                             value={type.genre}
                             checked={checkedGenres[index]}
@@ -118,10 +110,12 @@ function bandForm(props) {
         )
     })
 
-    //Limit genres to 3(max)
+    // Limit genres to 3(max)
     if(inputs.genre.length  > 3) {
         alert('Please pick no more than three genres')
     }
+
+
 
     return (
         <>
@@ -137,6 +131,7 @@ function bandForm(props) {
                         value={inputs.name}
                         onChange={handleChange}
                         placeholder='Band Name' 
+                        required
                     />
                         <input 
                             type="email" 
@@ -166,17 +161,17 @@ function bandForm(props) {
                         type='url'
                         className="input--text" 
                         name='bandcampURL'
-                        value={inputs.bandcamp}
+                        value={inputs.bandcampURL}
                         onChange={handleChange}
                         placeholder='Bandcamp Url' 
                     />
                     <input 
                         type='url'
                         className="input--text" 
-                        name='soundCloudURL'
-                        value={inputs.soundCloud}
+                        name='soundcloudURL'
+                        value={inputs.soundcloudURL}
                         onChange={handleChange}
-                        placeholder='SoundCloud Url' 
+                        placeholder='Soundcloud Url' 
                     />
                     <select
                         name='city'
@@ -184,6 +179,7 @@ function bandForm(props) {
                         className="input--text"
                         value={inputs.city}
                         onChange={handleChange}
+                        required
                     >
                         <option value="salt lake city/SLC">- Salt Lake/SLC -</option>
                         <option value="ogden"> - Ogden - </option>
@@ -193,15 +189,6 @@ function bandForm(props) {
                     <div className='checkbox--genre--container'>
                         {checkboxGenre}
                     </div>
-                    {/* <div onChange={handleChange}>
-                        <input type='radio' value={inputs.genre} name='genre' />
-                        <input type='radio' value={inputs.genre} name='genre' />
-                        <input type='radio' value={inputs.genre} name='genre' />
-                        <input type='radio' value={inputs.genre} name='genre' />
-                        <input type='radio' value={inputs.genre} name='genre' />
-                        <input type='radio' value={inputs.genre} name='genre' />
-                        <button>Submit</button>
-                    </div> */}
                     <br></br>
                     <button 
                         onSubmit={handleSubmit}

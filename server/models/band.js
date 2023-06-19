@@ -17,11 +17,11 @@ const bandSchema = new Schema({
     spotifyURL: {
         type: String
     },
-    bandcampURL: {
+    bandcamp: {
         type: String
     },
-    soundCloudURL: {
-        String
+    soundcloudURL: {
+        type: String
     },
     email: {
         type: String
