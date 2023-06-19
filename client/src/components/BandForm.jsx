@@ -74,7 +74,7 @@ function bandForm() {
     }
     
     function postData(inputs) {
-        axios.post('/api/bands', inputs)
+        axios.post('https://bandspace-production.up.railway.app/bands/bands', inputs)
             .then(res => console.log(res.data))
             .catch(err => console.log(err))
     }
