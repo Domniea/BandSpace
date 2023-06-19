@@ -59,7 +59,7 @@ bandRouter.delete('/:bandId', (req, res, next) => {
         if(err) {
             res.sendStatus(500)
         }
-        return res.status(200).send(`Item DELETED`)
+        return res.status(200).send(deletedItem)
     })
 })
 

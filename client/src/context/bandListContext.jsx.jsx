@@ -23,8 +23,31 @@ function BandListProvider(props) {
             .catch(err => console.log(err))
     }
 
+    function editBand(bandId, updates) {
+        axios.put(`https://bandspace-production.up.railway.app/bands/${bandId}`, updates)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }
+
+    function deleteBand(bandId) {
+        axios.delete(`https://bandspace-production.up.railway.app/bands/${bandId}`)
+            .then(res => setBandList(prevState => {
+                return prevState.filter(act => act._id !== bandId)
+            }
+            
+        ))
+            .catch(err => console.log(err))
+    }
+
     return (
-        <BandListData.Provider value={{bandList, postBand}}>
+        <BandListData.Provider value={
+            {
+                bandList,
+                postBand,
+                editBand,
+                deleteBand
+            }
+        }>
             {props.children}
         </BandListData.Provider>
     )
