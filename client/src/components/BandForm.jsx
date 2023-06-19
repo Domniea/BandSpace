@@ -3,8 +3,9 @@ import { useState } from "react"
 import axios from 'axios'
 import  genres  from '../utils/genres'
 
-function bandForm() {
+function bandForm(props) {
     
+    const { submit } = props
     
     const initInputs = {
         name: '',
@@ -72,18 +73,18 @@ function bandForm() {
         })
 
     }
-    
-    function postData(inputs) {
-        axios.post('https://bandspace-production.up.railway.app/bands', inputs)
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))
-    }
+
+    // function postData(inputs) {
+    //     axios.post('https://bandspace-production.up.railway.app/bands', inputs)
+    //         .then(res => console.log(res.data))
+    //         .catch(err => console.log(err))
+    // }
 
     //Submit to API
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(inputs)
-        postData(inputs)
+        // console.log(inputs)
+        submit(inputs)
         setInputs(initInputs)
         setCheckedGenres(initCheckboxes)
     }

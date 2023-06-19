@@ -12,8 +12,19 @@ function BandListProvider(props) {
             .catch(err => console.log(err))
     }, [])
 
+    function postBand(inputs) {
+        axios.post('https://bandspace-production.up.railway.app/bands', inputs)
+            .then(res => setBandList(prevState=> {
+                [
+                    ...prevState,
+                    res.data
+                ]
+            }))
+            .catch(err => console.log(err))
+    }
+
     return (
-        <BandListData.Provider value={bandList}>
+        <BandListData.Provider value={{bandList, postBand}}>
             {props.children}
         </BandListData.Provider>
     )

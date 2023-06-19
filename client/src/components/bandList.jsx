@@ -3,11 +3,9 @@ import { BandListData } from "../context/bandListContext.jsx";
 import BandCard from "./BandCard.jsx";
 
 function BandList() {
-    const bands = useContext(BandListData)
+    const {bandList} = useContext(BandListData)
 
-    console.log(bands)
-
-    const band = bands.map(act => {
+    const band = bandList.map(act => {
         return <BandCard 
             key={act._id}
             {...act}
