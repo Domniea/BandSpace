@@ -7,13 +7,13 @@ function BandListProvider(props) {
     const [bandList, setBandList] = useState([])
 
     useEffect(() => {
-        axios.get('/api/bands')
+        axios.get('https://bandspace-production.up.railway.app/bands')
             .then(res => setBandList(res.data))
             .catch(err => console.log(err))
     }, [])
 
     function postBand(inputs) {
-        axios.post('/api/bands', inputs)
+        axios.post('https://bandspace-production.up.railway.app/bands', inputs)
             .then(res => setBandList(prevState => {
                 return [
                     ...prevState,
@@ -24,13 +24,13 @@ function BandListProvider(props) {
     }
 
     function editBand(bandId, updates) {
-        axios.put(`/api/bands/${bandId}`, updates)
+        axios.put(`https://bandspace-production.up.railway.app/bands/${bandId}`, updates)
             .then(res => console.log(res))
             .catch(err => console.log(err))
     }
 
     function deleteBand(bandId) {
-        axios.delete(`/api/bands/${bandId}`)
+        axios.delete(`https://bandspace-production.up.railway.app/bands/${bandId}`)
             .then(res => setBandList(prevState => {
                 return prevState.filter(act => act._id !== bandId)
             }
