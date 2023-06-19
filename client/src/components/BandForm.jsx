@@ -85,6 +85,7 @@ function bandForm(props) {
         e.preventDefault()
         // console.log(inputs)
         submit(inputs)
+        alert('Your Band Has Been Submitted!!!')
         setInputs(initInputs)
         setCheckedGenres(initCheckboxes)
     }
