@@ -17,7 +17,7 @@ const bandSchema = new Schema({
     spotifyURL: {
         type: String
     },
-    bandcamp: {
+    bandcampURL: {
         type: String
     },
     soundcloudURL: {

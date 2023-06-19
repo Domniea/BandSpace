@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 function BandCard(props) {
 
-    const {name, facebookURL, spotifyURL, bandcampURL, soundCloudURL, genre, _id, deleteBand} = props
+    const {name, facebookURL, spotifyURL, bandcampURL, soundcloudURL, genre, _id, deleteBand} = props
 
     const [showBandDetails, setShowBandDetails] = useState(false)
 
@@ -41,9 +41,9 @@ function BandCard(props) {
 
                         }
                         {
-                            soundCloudURL &&
+                            soundcloudURL &&
                             <>
-                                <a href={soundCloudURL}>SoundCloud</a>
+                                <a href={soundcloudURL}>Soundcloud</a>
                                 <br></br>
                             </>
                         }
