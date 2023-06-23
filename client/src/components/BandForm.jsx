@@ -53,7 +53,7 @@ function bandForm(props) {
         }) 
 
         setCheckedGenres(updatedCheckedGenres)
-
+        
         const allGenres = updatedCheckedGenres.reduce(
             (allGenres, value, index) => {
                 if(value === true) {

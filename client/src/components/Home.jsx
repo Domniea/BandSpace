@@ -1,4 +1,5 @@
 import React from "react";
+import TestCheckBox from "./TestCheckbox";
 
 
 function Home() {
@@ -6,6 +7,7 @@ function Home() {
         <>
             <div className="Home">
                 <h1>Home Test</h1>
+                <TestCheckBox />
             </div>
         </>
     )

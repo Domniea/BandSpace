@@ -61,13 +61,17 @@ button, input, select {
   background-color: rgba(128, 128, 128, 0.434);
   border: 1px solid black;
   margin: 3%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
+  columns: 3;
 }
 
 .checkbox--genre {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  margin: 1vw;
+}
+
+.checkbox--genre > label {
   margin: 1vw;
 }
 

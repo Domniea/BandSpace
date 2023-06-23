@@ -15,7 +15,7 @@ const genres = [
         genre: "Hardcore"
     },
     {
-        genre: "American Hardcore"
+        genre: "Hardcore"
     },
     {
         genre: "Trash"
