@@ -6,7 +6,7 @@ const GenreCheckboxContainer = (props) => {
 
     const [show, setShow] = useState(false)
 
-    const { genres, setGenres, types, genreGroup, handleChange } = props
+    const { genres, setGenres, types, genreGroup, handleChange, index } = props
 
     const toggle = () => {
         setShow(prevState => !prevState)
@@ -34,7 +34,23 @@ const GenreCheckboxContainer = (props) => {
         )
         
         console.log(allGenres)
+
+        setGenres(prevState => {
+            // const genres = [...prevState]
+            return prevState.map((x, place) => {
+                if(place === index){
+                    return allGenres
+                }
+                else {
+                    return x
+                }
+            })
+        })
+
     }
+
+    console.log(genres)
+
 
     const checkbox = types.map((sound, index) => {
         const { genre } = sound
@@ -54,7 +70,6 @@ const GenreCheckboxContainer = (props) => {
         </div>
     })
     
-    console.log(genres)
 
     return (
         <div>
