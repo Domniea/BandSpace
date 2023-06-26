@@ -18,10 +18,10 @@ const genres = [
         genre: "Hardcore"
     },
     {
-        genre: "Trash"
+        genre: "Metal"
     },
     {
-        genre: "Metal"
+        genre: "Trash"
     },
     {
         genre: "Doom Metal"

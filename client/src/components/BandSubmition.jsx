@@ -1,10 +1,7 @@
 import React, { useContext } from "react";
 import BandForm from "./BandForm";
-import { BandListData } from "../context/bandListContext.jsx";
 
 function BandSubmition() {
-
-    const {bandList, postBand} = useContext(BandListData)
 
     return (
         <>
@@ -12,9 +9,7 @@ function BandSubmition() {
                 <header>
                     <h1>Band Submition Form</h1>
                 </header>
-                <BandForm 
-                    submit={postBand}
-                />
+                <BandForm />
             </div>
         </>
     )

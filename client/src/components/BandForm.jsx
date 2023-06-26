@@ -1,10 +1,12 @@
-import React from 'react'
-import { useState } from "react"
+import React, { useEffect } from 'react'
+import { useState, useContext} from "react"
+import { BandListData } from "../context/bandListContext.jsx";
 import  genres  from '../utils/genres'
+import CheckboxesContainer from './CheckboxesContainer'
 
 function bandForm(props) {
     
-    const { submit } = props
+    const { postBand } = useContext(BandListData)
     
     const initInputs = {
         name: '',
@@ -16,10 +18,21 @@ function bandForm(props) {
         soundcloudURL: '',
         email: ''
     }
-
+    const [tempCheckboxGenres, setTempCheckboxGenres] = useState(
+        [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    )
     const initCheckboxes =  new Array(genres.length).fill(false)
 
-    const genreData = []
+    // const genreData = tempCheckboxGenres.flat()
 
     const [checkedGenres, setCheckedGenres] = useState(
         new Array(genres.length).fill(false)
@@ -29,7 +42,7 @@ function bandForm(props) {
         {
             name: '',
             city: 'Salt Lake City/SLC',
-            genre: genreData,
+            genre: 'poop',
             facebookURL: '',
             spotifyURL: '',
             bandcampURL: '',
@@ -37,6 +50,15 @@ function bandForm(props) {
             email: ''
         }
     )
+
+    useEffect(() => {
+        setInputs(prevState =>  {
+            return {
+                ...prevState,
+                 genre: tempCheckboxGenres.flat()
+            } 
+         })
+    }, [tempCheckboxGenres])
 
     //Handle change functions
     function handleChange(e) {
@@ -47,83 +69,57 @@ function bandForm(props) {
         }))
     }
 
-    function handleCheckedGenreChange(position) {
-        const updatedCheckedGenres = checkedGenres.map((item, index, ) => {
-            return index === position ? !item : item  
-        }) 
+    // function handleCheckedGenreChange(position) {
+    //     const updatedCheckedGenres = checkedGenres.map((item, index, ) => {
+    //         return index === position ? !item : item  
+    //     }) 
 
-        setCheckedGenres(updatedCheckedGenres)
+    //     setCheckedGenres(updatedCheckedGenres)
         
-        const allGenres = updatedCheckedGenres.reduce(
-            (allGenres, value, index) => {
-                if(value === true) {
-                    return [...allGenres, genres[index].genre]
-                }
-                return allGenres
-            }
-            ,[]
-        )
+    //     const allGenres = updatedCheckedGenres.reduce(
+    //         (allGenres, value, index) => {
+    //             if(value === true) {
+    //                 return [...allGenres, genres[index].genre]
+    //             }
+    //             return allGenres
+    //         }
+    //         ,[]
+    //     )
 
-        setInputs(prevState => {
-            return {
-                ...prevState,
-                genre: allGenres
-            }
-        })
+    //     setInputs(prevState => {
+    //         return {
+    //             ...prevState,
+    //             genre: allGenres
+    //         }
+    //     })
 
-    }
+    // }
 
     //Submit to API
     function handleSubmit(e) {
         e.preventDefault()
         console.log(inputs)
-        submit(inputs)
+        // postBand(inputs)
         alert('Your Band Has Been Submitted!!!')
         setInputs(initInputs)
         setCheckedGenres(initCheckboxes)
     }
 
-    // Genre checknboxes render
-    const checkboxGenre = genres.map((type, index) => {
-        return(
-                <div 
-                    key={index}
-                    className='checkbox--genre'
-                >   
-                    <>
-                        <input 
-                            type='checkbox'
-                            name={type.genre}
-                            id={`checkbox-genre-${type.genre}`}
-                            value={type.genre}
-                            checked={checkedGenres[index]}
-                            onChange={() => handleCheckedGenreChange(index)}
-                        />
-                        <label 
-                            htmlFor={`checkbox-genre-${type.genre}`}
-                        >
-                            {type.genre}
-                        </label>
-                    </>          
-                        
-                </div>
-        )
-    })
-
     // Limit genres to 3(max)
-    if(inputs.genre.length  > 3) {
-        alert('Please pick no more than three genres')
-    }
+    // if(inputs.genre.length  >= 3) {
+    //     alert('Please pick no more than three genres')
+    // }
 
+    console.log(inputs.genre)
 
-
-    return (
+    return ( 
         <>
             <div className="Form--bandsubmition">
                 <form 
                     onSubmit={handleSubmit}
                     className="Form--bandsubmition"   
                 >
+                    <div className='type-or-select'>
                     <input 
                         type="text" 
                         name='name'
@@ -186,9 +182,14 @@ function bandForm(props) {
                         <option value="logan">- Logan -</option>
                         <option value="st george">- St. George -</option>
                     </select>
-                    <div className='checkbox--genre--container'>
-                        {checkboxGenre}
                     </div>
+                    <h4 style={{textAlign: 'center'}}>Please limit genres to 5</h4>
+                    <CheckboxesContainer 
+                        tempCheckboxGenres={tempCheckboxGenres}
+                        setTempCheckboxGenres={setTempCheckboxGenres}
+                        setInputs={setInputs}
+                        
+                    />
                     <br></br>
                     <button 
                         onSubmit={handleSubmit}

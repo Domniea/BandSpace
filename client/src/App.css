@@ -43,7 +43,7 @@ button, input, select {
   align-items: center;
 }
 
-.Form--bandsubmition {
+.type-or-select {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -55,14 +55,14 @@ button, input, select {
   margin: 1vh;
 }
 
-.checkbox--genre--container {
+/* .checkbox--genre--container {
   width: fit-content;
   height: fit-content;
   background-color: rgba(128, 128, 128, 0.434);
   border: 1px solid black;
   margin: 3%;
   columns: 3;
-}
+} */
 
 .checkbox--genre {
   /* display: flex;
@@ -75,17 +75,13 @@ button, input, select {
   margin: 1vw;
 }
 
-.BandCard {
+.BandCard, .GenreCard {
   background-color: rgba(128, 128, 128, 0.434);
   border: 1px solid black;
   margin: 2%;
+  padding: 2%;
   height: fit-content;
 }
-
-/* .bandHeader {
-  background-color: rgb(177, 196, 177);
-  border: 1px rgb(69, 69, 69);
-} */
 
 .bandHeader > h1 {
   display: inline;
@@ -95,4 +91,15 @@ button, input, select {
   display: inline;
   float: right;
   padding: .5%
+}
+
+/* .GenreCheckboxContainer {
+  margin: 5%;
+  border: 3px solid grey;
+  display: flex;
+  justify-content: space-between;
+} */
+
+.checkbox--single {
+  margin: 1%;
 }

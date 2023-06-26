@@ -6,7 +6,7 @@ const GenreCheckboxContainer = (props) => {
 
     const [show, setShow] = useState(false)
 
-    const { genres, setGenres, types, genreGroup, handleChange, index } = props
+    const { setTempCheckboxGenres, setInputs, tempCheckboxGenres, types, genreGroup, index } = props
 
     const toggle = () => {
         setShow(prevState => !prevState)
@@ -32,11 +32,9 @@ const GenreCheckboxContainer = (props) => {
             }
             ,[]
         )
-        
-        console.log(allGenres)
+    
 
-        setGenres(prevState => {
-            // const genres = [...prevState]
+        setTempCheckboxGenres(prevState => {
             return prevState.map((x, place) => {
                 if(place === index){
                     return allGenres
@@ -47,15 +45,22 @@ const GenreCheckboxContainer = (props) => {
             })
         })
 
+        // setInputs(prevState =>  {
+        //    return {
+        //        ...prevState,
+        //         genre: tempCheckboxGenres.flat()
+        //    } 
+        // })
+       
     }
-
-    console.log(genres)
-
 
     const checkbox = types.map((sound, index) => {
         const { genre } = sound
 
-        return <div key={index}>
+        return <div 
+            key={index}
+            className="checkbox--single"
+        >
             <label >
                 <input 
                     type="checkbox"
@@ -69,16 +74,24 @@ const GenreCheckboxContainer = (props) => {
             </label>
         </div>
     })
-    
 
     return (
-        <div>
-            <h1>{genreGroup}</h1>
-            <button onClick={toggle}>Show</button>
+        <div className="GenreCard">
+            <div className="bandHeader">
+                <h1>{genreGroup}</h1>
+                 <button 
+                    onClick={toggle}
+                    type="button"
+                 >
+                    Show
+                    </button>
+            </div>
             {   
                 show &&
                 <>
-                  {checkbox}
+                    <div className="checkbox--genre--container">
+                      {checkbox}
+                    </div>
                 </> 
             }
         </div>
