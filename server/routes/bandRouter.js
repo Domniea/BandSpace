@@ -30,7 +30,7 @@ bandRouter.post('/', (req, res, next) => {
     const newBand = new Band(req.body)
     newBand.save((err, data) => {
         if(err) {
-            res.sendStatus(500)
+            res.status(500)
             return next(err)
         }
         return res.status(200).send(data)
