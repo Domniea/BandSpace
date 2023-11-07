@@ -1,0 +1,58 @@
+# Comments are provided throughout this file to help you get started.
+# If you need more help, visit the Docker compose reference guide at
+# https://docs.docker.com/compose/compose-file/
+
+# Here the instructions define your application as a service called "server".
+# This service is built from the Dockerfile in the current directory.
+# You can add other services your application may depend on here, such as a
+# database or a cache. For examples, see the Awesome Compose repository:
+# https://github.com/docker/awesome-compose
+# services:
+#   server:
+#     build:
+#       context: .
+#     environment:
+#       NODE_ENV: production
+#     ports:
+#       - 9000:9000
+
+# services:
+#     frontend:
+#       build:
+#         context: frontend
+#         target: development
+#       ports:
+#         - 9000:9000
+#       stdin_open: true
+#       volumes:
+#         - ./frontend: /usr/src/app
+
+version: '1'
+
+services:
+    client:
+        image: bandspace-fe
+        restart: always
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./client:/client
+            - /client/node_modules
+        links:
+            - server
+        networks:
+            - webappnetwork
+    server:
+        image: bandspace-be
+        restart: always
+        ports:
+            - "6000:6000"
+        volumes:
+            - ./server:/server
+            - /server/node_modules
+        networks:
+            - webappnetwork
+
+networks:
+  webappnetwork:
+    driver: bridge
